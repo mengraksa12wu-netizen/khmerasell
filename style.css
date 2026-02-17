@@ -1,0 +1,376 @@
+/* Enable Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-gradient: linear-gradient(45deg, #007bff, #00ff88);
+    --dark-bg: #121212;
+}
+
+body {
+    font-family: 'Moul', 'Poppins', sans-serif; 
+    background-color: #f0f2f5;
+    overflow-x: hidden;
+    line-height: 1.6; 
+}
+
+h1, h2, h3, .cool-title {
+    font-family: 'Oswald', sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+/* --- LOGIN SECTION --- */
+#login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cool-title {
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: none;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+}
+
+.btn-dark {
+    transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+    background: #333;
+    transform: translateY(-3px); /* ឱ្យវាងើបឡើងបន្តិច */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* ថែមស្រមោល */
+}
+
+/* --- MAIN WEBSITE SECTION --- */
+#main-content {
+    display: none; /* Hidden until login */
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; } 
+    to { opacity: 1; } 
+}
+
+.nav-user-email {
+    color: #00ff88 !important;
+    font-weight: 600;
+    font-family: 'Kanit', sans-serif;
+    letter-spacing: 0.5px;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    background: rgba(0, 255, 136, 0.1); 
+    padding: 5px 12px;
+    border-radius: 50px;
+}
+
+
+/* កំណត់ទម្រង់ Hero */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+}
+
+/* ចំណុចសំខាន់៖ ត្រូវថែម display: block និង content: "" ឱ្យគ្រប់ Class */
+.hero::before, 
+.hero::after, 
+.hero-bg-3, 
+.hero-bg-4,
+.hero-bg-5 {
+    content: "";
+    display: block; /* បង្ខំឱ្យវាបង្ហាញរូបរាង */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeAnimation 20s infinite; /* ២០វិនាទីសម្រាប់ ៤រូប */
+}
+
+/* រូបទី ១ */
+.hero::before {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://www.g3boats.com/wp-content/uploads/2025/01/10-Must-Visit-Fishing-Spots.jpg');
+    animation-delay: 0s;
+}
+
+/* រូបទី ២ */
+.hero::after {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop');
+    animation-delay: 5s;
+}
+
+/* រូបទី ៣ */
+.hero-bg-3 {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+    animation-delay: 10s;
+}
+
+/* រូបទី ៤ (រូបថ្មីដែលអ្នកចង់ថែម) */
+.hero-bg-4 {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://images.unsplash.com/photo-1499678329028-101435549a4e?q=80&w=2070&auto=format&fit=crop');
+    animation-delay: 15s;
+}
+
+.hero-bg-5 {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/2928/live/9a5cfa90-0ef0-11f0-9471-fd068d782b6b.jpg');
+    animation-delay: 20s;
+}
+/* ច្បាប់ Fade (៥% Fade In, ២០% បង្ហាញច្បាស់, ៥% Fade Out) */
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    5% { opacity: 1; }   /* ចាប់ផ្ដើមលេចចេញ */
+    25% { opacity: 1; }  /* នៅនឹងថ្កល់ */
+    30% { opacity: 0; }  /* ចាប់ផ្ដើមរលាយបាត់ */
+    100% { opacity: 0; }
+}
+
+/* ធានាថាអក្សរនៅពីលើរូបភាព */
+.hero > .container {
+    position: relative;
+    z-index: 10;
+}
+
+.section-padding { padding: 80px 0; }
+
+.menu-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(231, 5, 5, 0.05);
+    transition: 0.3s;
+    text-align: center;
+    background: white;
+}
+
+.menu-card:hover { transform: translateY(-10px); }
+
+.menu-card img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 40px 0;
+}
+
+/* Order Quantity Badge */
+.order-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--dark-bg);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* QR Code Container */
+.qr-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px dashed #dee2e6;
+}
+
+#paymentQR {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* បន្ថែមចលនា Smooth សម្រាប់ Modal */
+.modal.fade .modal-dialog {
+    transform: scale(0.6); /* ឱ្យវាផ្ដើមចេញពីទំហំតូច */
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: scale(1); /* នៅពេលបង្ហាញ ឱ្យវាពង្រីកមកទំហំធម្មតាវិញ */
+}
+
+/* បន្ថែមស្រមោល និងរាងមូលឱ្យកាន់តែស្អាត */
+.modal-content {
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ចលនាសម្រាប់ប៊ូតុង "I have paid" */
+.btn-cool {
+    transition: all 0.3s ease;
+}
+
+.btn-cool:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+/* បង្កើតចលនាសម្រាប់ Success Message */
+.success-checkmark {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* ធ្វើឱ្យអក្សរ Payment Done មើលទៅស្អាត */
+.payment-title {
+    color: #2c3e50;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+/* កែសម្រួល Navbar ឱ្យដើរស្អាតលើ Mobile */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #212529; /* ពណ៌ខ្មៅដូច Navbar */
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-item {
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #333; /* បន្ថែមបន្ទាត់ខណ្ឌចន្លោះ Menu */
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    /* ធ្វើឱ្យ Logout Button មើលទៅធំស្រួលចុចលើ iPhone */
+    .btn-danger {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+}
+
+/* បង្ខំឱ្យលាក់នៅលើអេក្រង់ទូរសព្ទ (តូចជាង 992px) */
+@media (max-width: 991.98px) {
+    .collapse:not(.show) {
+        display: none !important;
+    }
+    
+    /* កំណត់ម៉ូដឱ្យដូចក្នុងរូបថតរបស់អ្នក */
+    .navbar-collapse {
+        background-color: #212529; /* ពណ៌ខ្មៅងងឹត */
+        padding: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .nav-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #333; /* បន្ទាត់ខណ្ឌអក្សរ */
+    }
+}
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+.nav-link:hover{
+  color: #d4af37 !important;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0; 
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+/* បង្ខំឱ្យ Menu ផ្អឹបទៅខាងឆ្វេងពេលនៅលើ Mobile ដោយមិនប្តូរ Font */
+@media (max-width: 991.98px) {
+    /* រុញ Menu Items ឱ្យទៅខាងឆ្វេងបំផុត */
+    .navbar-collapse .navbar-nav {
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding-left: 0 !important;
+    }
+
+    /* ឱ្យ Item នីមួយៗអូសពេញទទឹង និងថែមបន្ទាត់ខណ្ឌស្តើងៗ */
+    .navbar-collapse .nav-item {
+        width: 100% !important;
+        text-align: left !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* ដកគម្លាតខាងមុខអក្សរចេញ និងបង្រួមចន្លោះលើក្រោមឱ្យស្លីម */
+    .navbar-collapse .nav-link {
+        padding-left: 0 !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    /* រុញប៊ូតុង Logout ឱ្យនៅជួរជាមួយអក្សរខាងលើ */
+    .navbar-collapse .btn-danger {
+        margin-left: 0 !important;
+        margin-top: 15px !important;
+        align-self: flex-start !important;
+    }
+}
